@@ -1,0 +1,6 @@
+body{font-family:Arial,sans-serif;background:#0f172a;color:#fff;margin:0}
+.container{max-width:1000px;margin:auto;padding:20px;text-align:center}
+.countdown{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.card{background:#1e293b;padding:20px;border-radius:16px;min-width:120px}
+span{font-size:2rem;font-weight:bold;display:block}
+.verse,.prayer{background:#1e293b;padding:20px;border-radius:16px;margin-top:20px}
