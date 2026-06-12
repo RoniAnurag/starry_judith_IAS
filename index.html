@@ -1,34 +1,604 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Starry Judith • IAS Journey</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Starry Judith 🕊️</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9A84C;--gold2:#E8C87A;--deep:#03030E;--rose:#E8C4B8;
+  --soft:rgba(255,255,255,0.75);--white:#fff;
+}
+html{scroll-behavior:smooth}
+body{background:var(--deep);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden}
+
+/* ── LAYERED BACKGROUND ── */
+#cvs-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+#cvs-fg{position:fixed;inset:0;z-index:1;pointer-events:none}
+
+/* ── NEBULA LAYERS (CSS animated) ── */
+.nebula{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;will-change:transform,opacity}
+.nb1{width:600px;height:600px;background:radial-gradient(circle,rgba(30,60,140,.45),transparent 70%);top:-10%;left:-15%;animation:nb1 18s ease-in-out infinite alternate}
+.nb2{width:500px;height:500px;background:radial-gradient(circle,rgba(80,30,120,.35),transparent 70%);top:30%;right:-10%;animation:nb2 22s ease-in-out infinite alternate}
+.nb3{width:700px;height:400px;background:radial-gradient(circle,rgba(160,100,20,.18),transparent 70%);bottom:10%;left:20%;animation:nb3 26s ease-in-out infinite alternate}
+.nb4{width:400px;height:400px;background:radial-gradient(circle,rgba(20,80,100,.3),transparent 70%);bottom:-5%;right:5%;animation:nb4 20s ease-in-out infinite alternate}
+@keyframes nb1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(80px,60px) scale(1.15)}}
+@keyframes nb2{0%{transform:translate(0,0) scale(1.1)}100%{transform:translate(-70px,80px) scale(.95)}}
+@keyframes nb3{0%{transform:translate(0,0) scale(1)}100%{transform:translate(60px,-50px) scale(1.1)}}
+@keyframes nb4{0%{transform:translate(0,0) scale(.95)}100%{transform:translate(-50px,-60px) scale(1.1)}}
+
+/* aurora top ribbon */
+.aurora{
+  position:fixed;top:0;left:-20%;width:140%;height:220px;
+  background:linear-gradient(180deg,rgba(60,120,255,.13) 0%,rgba(100,60,200,.09) 40%,transparent 100%);
+  filter:blur(18px);z-index:0;pointer-events:none;
+  animation:aur 12s ease-in-out infinite alternate;
+}
+@keyframes aur{0%{opacity:.5;transform:scaleX(1) translateY(0)}100%{opacity:1;transform:scaleX(1.08) translateY(18px)}}
+
+main{position:relative;z-index:2}
+
+/* ── SECTIONS ── */
+.s{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;position:relative}
+
+/* ── HERO ── */
+#hero{text-align:center}
+.hero-dove{font-size:clamp(2.4rem,7vw,4rem);margin-bottom:10px;animation:hvr 3.5s ease-in-out infinite}
+@keyframes hvr{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+.for-label{font-family:'Dancing Script',cursive;font-size:clamp(1rem,3vw,1.35rem);color:var(--gold);letter-spacing:.1em;margin-bottom:10px;opacity:.85}
+.hero-name{
+  font-family:'Playfair Display',serif;font-weight:700;
+  font-size:clamp(3rem,12vw,7rem);line-height:1.02;
+  background:linear-gradient(135deg,#fff 20%,var(--gold2) 55%,#fff 90%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:6px;
+}
+.hero-nick{font-family:'Dancing Script',cursive;font-size:clamp(1.1rem,3.5vw,1.7rem);color:var(--rose);margin-bottom:26px}
+.hero-sub{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(.92rem,2.3vw,1.18rem);color:var(--soft);
+  max-width:520px;line-height:1.75;margin-bottom:50px
+}
+.scroll-cue{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);opacity:.6;animation:pc 2s ease-in-out infinite}
+@keyframes pc{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:.9;transform:translateY(6px)}}
+
+/* ── COUNTDOWN ── */
+#countdown-s{background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(13,27,62,.5),transparent)}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,3.5vw,1.9rem);color:var(--gold);text-align:center;letter-spacing:.04em;margin-bottom:44px}
+.cd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:640px;width:100%;margin:0 auto 28px}
+@media(min-width:500px){.cd-grid{grid-template-columns:repeat(4,1fr)}}
+.cd-card{
+  background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.3);
+  border-radius:20px;padding:28px 12px 22px;text-align:center;
+  backdrop-filter:blur(12px);transition:transform .25s,border-color .25s,box-shadow .25s;cursor:default;
+}
+.cd-card:hover{transform:translateY(-6px);border-color:rgba(201,168,76,.7);box-shadow:0 0 32px rgba(201,168,76,.2)}
+.cd-num{
+  font-family:'Playfair Display',serif;font-size:clamp(2.4rem,8vw,4rem);
+  font-weight:700;line-height:1;margin-bottom:8px;
+  background:linear-gradient(180deg,#fff 40%,var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.cd-lbl{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.8}
+.cd-note{font-family:'Dancing Script',cursive;font-size:clamp(1rem,2.8vw,1.25rem);color:var(--rose);text-align:center;opacity:.85;margin-top:6px}
+
+/* ── JESUS PORTRAITS ── */
+#jesus-s{text-align:center}
+.jesus-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.92rem,2.3vw,1.18rem);color:var(--soft);max-width:520px;line-height:1.75;margin-bottom:44px}
+.jesus-grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:740px;width:100%}
+@media(min-width:600px){.jesus-grid{grid-template-columns:repeat(2,1fr)}}
+.jesus-card{border-radius:18px;overflow:hidden;border:1px solid rgba(201,168,76,.22);background:rgba(255,255,255,.03);transition:transform .3s,box-shadow .3s}
+.jesus-card:hover{transform:translateY(-6px) scale(1.015);box-shadow:0 16px 48px rgba(0,0,0,.55)}
+.jesus-svg{width:100%;aspect-ratio:4/3;display:block}
+.jesus-caption{padding:14px 18px 18px;font-family:'Playfair Display',serif;font-style:italic;font-size:.9rem;color:var(--soft);line-height:1.65;text-align:center}
+
+/* ── VERSES ── */
+#verse-s{background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(201,168,76,.07),transparent)}
+.verse-wrap{max-width:660px;width:100%}
+.verse-card{
+  background:rgba(255,255,255,.045);border:1px solid rgba(201,168,76,.3);
+  border-radius:22px;padding:clamp(28px,5vw,54px) clamp(22px,5vw,52px);
+  text-align:center;backdrop-filter:blur(14px);overflow:hidden;position:relative
+}
+.verse-card::before{content:'\201C';position:absolute;top:-24px;left:14px;font-size:11rem;color:var(--gold);opacity:.05;font-family:'Playfair Display',serif;line-height:1;pointer-events:none}
+.verse-eyebrow{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;opacity:.8}
+.verse-icon{font-size:2.6rem;margin-bottom:18px;display:block}
+.verse-txt{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1rem,2.6vw,1.38rem);line-height:1.75;color:var(--white);margin-bottom:18px}
+.verse-ref{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.v-nav{display:flex;gap:12px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+.v-btn{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.4);color:var(--gold);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:10px 22px;border-radius:40px;cursor:pointer;transition:background .2s,transform .15s;font-family:'Inter',sans-serif}
+.v-btn:hover{background:rgba(201,168,76,.25);transform:translateY(-2px)}
+
+/* ── LOVE NOTE ── */
+#love-s{background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(232,196,184,.07),transparent)}
+.love-card{max-width:600px;width:100%;padding:clamp(30px,5vw,54px) clamp(24px,5vw,50px);border:1px solid rgba(232,196,184,.25);border-radius:22px;background:rgba(232,196,184,.04);text-align:center}
+.love-from{font-family:'Dancing Script',cursive;font-size:clamp(1.2rem,3.5vw,1.7rem);color:var(--rose);margin-bottom:14px}
+.love-txt{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.92rem,2.2vw,1.12rem);color:var(--soft);line-height:1.85;margin-bottom:24px}
+.love-sign{font-family:'Dancing Script',cursive;font-size:clamp(1.3rem,3.5vw,1.9rem);color:var(--gold)}
+
+footer{position:relative;z-index:2;text-align:center;padding:24px 20px 48px;font-size:.72rem;color:rgba(255,255,255,.22);letter-spacing:.08em}
+
+/* ── FLOAT ANIMATIONS ── */
+.float-anim{opacity:0;transform:translateY(38px);transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)}
+.float-anim.show{opacity:1;transform:translateY(0)}
+.float-anim:nth-child(2){transition-delay:.1s}
+.float-anim:nth-child(3){transition-delay:.2s}
+.float-anim:nth-child(4){transition-delay:.3s}
+.float-anim:nth-child(5){transition-delay:.4s}
+
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.bob1{animation:bob 4.5s ease-in-out infinite}
+.bob2{animation:bob 5.2s ease-in-out infinite .7s}
+.bob3{animation:bob 4.8s ease-in-out infinite 1.3s}
+.bob4{animation:bob 5.5s ease-in-out infinite .4s}
+</style>
 </head>
 <body>
-<div class="container">
-<h1>✨ Starry Judith ✨</h1>
-<p class="nicknames">My Challam ❤️ • My Kuttii Idhayam ❤️</p>
-<p class="subtitle">Preparing for IAS • For the Glory of Jesus Christ</p>
 
-<div class="countdown">
-<div class="card"><span id="days">0</span><label>Days</label></div>
-<div class="card"><span id="hours">0</span><label>Hours</label></div>
-<div class="card"><span id="minutes">0</span><label>Minutes</label></div>
-<div class="card"><span id="seconds">0</span><label>Seconds</label></div>
-</div>
+<!-- nebula layers -->
+<div class="nebula nb1"></div>
+<div class="nebula nb2"></div>
+<div class="nebula nb3"></div>
+<div class="nebula nb4"></div>
+<div class="aurora"></div>
 
-<div class="verse">
-<h2>Today's Promise</h2>
-<p id="verse"></p>
-</div>
+<!-- background star canvas -->
+<canvas id="cvs-bg"></canvas>
+<!-- foreground interaction canvas -->
+<canvas id="cvs-fg"></canvas>
 
-<div class="prayer">
-<h2>Prayer</h2>
-<p>Lord Jesus, give Starry Judith wisdom, peace, discipline, strength, and confidence. Remove fear and anxiety. Let her preparation glorify You. Amen.</p>
-</div>
-</div>
-<script src="script.js"></script>
+<main>
+
+<!-- ══ HERO ══ -->
+<section class="s" id="hero">
+  <div class="hero-dove float-anim">🕊️</div>
+  <p class="for-label float-anim">This page was made with love, for</p>
+  <h1 class="hero-name float-anim">Starry Judith</h1>
+  <p class="hero-nick float-anim">my Challam &nbsp;·&nbsp; my Kuttii Idhayam 🤍</p>
+  <p class="hero-sub float-anim">
+    "She is not just studying for an exam —<br/>
+    she is walking in faith, for the glory of God<br/>
+    and for the glory of Jesus Christ."
+  </p>
+  <p class="scroll-cue">↓ scroll down, Challam ↓</p>
+</section>
+
+<!-- ══ COUNTDOWN ══ -->
+<section class="s" id="countdown-s">
+  <h2 class="sec-title float-anim">⏳ Your IAS Exam Countdown</h2>
+  <div class="cd-grid">
+    <div class="cd-card float-anim bob1"><div class="cd-num" id="d">--</div><div class="cd-lbl">Days</div></div>
+    <div class="cd-card float-anim bob2"><div class="cd-num" id="h">--</div><div class="cd-lbl">Hours</div></div>
+    <div class="cd-card float-anim bob3"><div class="cd-num" id="m">--</div><div class="cd-lbl">Minutes</div></div>
+    <div class="cd-card float-anim bob4"><div class="cd-num" id="sec">--</div><div class="cd-lbl">Seconds</div></div>
+  </div>
+  <p class="cd-note float-anim">September 6, 2026 — the day Starry Judith becomes an IAS Officer 🌟</p>
+</section>
+
+<!-- ══ JESUS PORTRAITS ══ -->
+<section class="s" id="jesus-s">
+  <h2 class="sec-title float-anim">✝️ He Walks With You, Starry</h2>
+  <p class="jesus-quote float-anim">
+    "The same Jesus who calmed the storm,<br/>
+    who raised Lazarus, who conquered the grave —<br/>
+    He is the one sitting with you as you study."
+  </p>
+  <div class="jesus-grid">
+
+    <div class="jesus-card float-anim bob1">
+      <svg class="jesus-svg" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="bg_a" cx="50%" cy="45%" r="65%">
+            <stop offset="0%" stop-color="#1E0A3C"/><stop offset="100%" stop-color="#04040F"/>
+          </radialGradient>
+          <radialGradient id="halo_a" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#FFE08A" stop-opacity=".95"/>
+            <stop offset="55%" stop-color="#C9A84C" stop-opacity=".3"/>
+            <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="400" height="300" fill="url(#bg_a)"/>
+        <g opacity=".13" stroke="#FFE08A" stroke-width="1.2">
+          <line x1="200" y1="130" x2="200" y2="5"/>
+          <line x1="200" y1="130" x2="320" y2="45"/>
+          <line x1="200" y1="130" x2="380" y2="170"/>
+          <line x1="200" y1="130" x2="80" y2="45"/>
+          <line x1="200" y1="130" x2="20" y2="170"/>
+          <line x1="200" y1="130" x2="330" y2="265"/>
+          <line x1="200" y1="130" x2="70" y2="265"/>
+          <line x1="200" y1="130" x2="200" y2="295"/>
+        </g>
+        <circle cx="200" cy="130" r="95" fill="url(#halo_a)"/>
+        <circle cx="200" cy="105" r="34" fill="none" stroke="#C9A84C" stroke-width="2" opacity=".55"/>
+        <path d="M168 210 Q165 255 158 290 L242 290 Q235 255 232 210Z" fill="#5C3D1A" opacity=".9"/>
+        <path d="M160 220 Q148 258 140 290 L260 290 Q252 258 240 220Z" fill="#3D2810" opacity=".6"/>
+        <rect x="178" y="175" width="44" height="40" rx="10" fill="#C49A6C" opacity=".95"/>
+        <rect x="193" y="163" width="14" height="16" rx="5" fill="#C49A6C"/>
+        <ellipse cx="200" cy="148" rx="26" ry="28" fill="#D4A96A"/>
+        <path d="M176 148 Q170 168 168 185 Q172 178 178 175" fill="#5C3200" opacity=".9"/>
+        <path d="M224 148 Q230 168 232 185 Q228 178 222 175" fill="#5C3200" opacity=".9"/>
+        <path d="M188 165 Q200 178 212 165 Q208 175 200 178 Q192 175 188 165Z" fill="#4A2800" opacity=".8"/>
+        <ellipse cx="191" cy="144" rx="4" ry="3.5" fill="#2A1800"/>
+        <ellipse cx="209" cy="144" rx="4" ry="3.5" fill="#2A1800"/>
+        <circle cx="192" cy="143" r="1.2" fill="#fff" opacity=".7"/>
+        <circle cx="210" cy="143" r="1.2" fill="#fff" opacity=".7"/>
+        <path d="M186 139 Q191 136 196 138" stroke="#4A2800" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M204 138 Q209 136 214 139" stroke="#4A2800" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M178 192 L148 182" stroke="#C49A6C" stroke-width="9" stroke-linecap="round"/>
+        <path d="M222 192 L252 182" stroke="#C49A6C" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="145" cy="181" r="7" fill="#C49A6C"/>
+        <circle cx="255" cy="181" r="7" fill="#C49A6C"/>
+        <circle cx="50" cy="30" r="1.4" fill="#fff" opacity=".7"/>
+        <circle cx="350" cy="20" r="1" fill="#fff" opacity=".8"/>
+        <circle cx="370" cy="80" r="1.2" fill="#fff" opacity=".5"/>
+        <text x="200" y="278" text-anchor="middle" font-family="Georgia,serif" font-size="12" fill="#C9A84C" font-style="italic" opacity=".9">"I am the light of the world."</text>
+        <text x="200" y="294" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="rgba(255,255,255,.45)">— John 8:12</text>
+      </svg>
+      <p class="jesus-caption">"No matter how dark the night of preparation feels, He is the light that never goes out — and He shines on every page you read."</p>
+    </div>
+
+    <div class="jesus-card float-anim bob2">
+      <svg class="jesus-svg" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="bg_b" cx="50%" cy="60%" r="70%">
+            <stop offset="0%" stop-color="#0A1A0D"/><stop offset="100%" stop-color="#04040F"/>
+          </radialGradient>
+          <radialGradient id="glow_b" cx="50%" cy="55%" r="50%">
+            <stop offset="0%" stop-color="#3A6A3A" stop-opacity=".35"/><stop offset="100%" stop-color="transparent"/>
+          </radialGradient>
+          <radialGradient id="moon_b" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#E8D090"/><stop offset="100%" stop-color="#C9A84C"/>
+          </radialGradient>
+        </defs>
+        <rect width="400" height="300" fill="url(#bg_b)"/>
+        <rect width="400" height="300" fill="url(#glow_b)"/>
+        <circle cx="68" cy="42" r="20" fill="url(#moon_b)" opacity=".75"/>
+        <circle cx="76" cy="37" r="16" fill="#04040F" opacity=".6"/>
+        <circle cx="140" cy="18" r="1.2" fill="#fff" opacity=".8"/>
+        <circle cx="220" cy="10" r="1" fill="#fff" opacity=".7"/>
+        <circle cx="310" cy="28" r="1.4" fill="#fff" opacity=".9"/>
+        <circle cx="370" cy="55" r="1" fill="#fff" opacity=".6"/>
+        <ellipse cx="200" cy="260" rx="180" ry="35" fill="#0D1A0D" opacity=".8"/>
+        <ellipse cx="100" cy="255" rx="60" ry="20" fill="#0A150A" opacity=".9"/>
+        <ellipse cx="330" cy="258" rx="50" ry="15" fill="#0A150A" opacity=".9"/>
+        <path d="M310 230 L310 120" stroke="#1A2A1A" stroke-width="6"/>
+        <circle cx="310" cy="100" r="42" fill="#0D1A0D" opacity=".85"/>
+        <circle cx="290" cy="115" r="28" fill="#0D1A0D" opacity=".7"/>
+        <circle cx="330" cy="112" r="30" fill="#0D1A0D" opacity=".75"/>
+        <path d="M80 230 L80 150" stroke="#1A2A1A" stroke-width="5"/>
+        <circle cx="80" cy="128" r="36" fill="#0D1A0D" opacity=".75"/>
+        <ellipse cx="195" cy="245" rx="35" ry="12" fill="#4A2E10" opacity=".7"/>
+        <path d="M170 240 Q180 200 195 190 Q210 200 220 240Z" fill="#6B4520" opacity=".9"/>
+        <path d="M165 235 Q175 195 195 183 Q215 195 225 235" fill="#3D2810" opacity=".75"/>
+        <rect x="183" y="175" width="28" height="20" rx="7" fill="#C49A6C" opacity=".85" transform="rotate(-15,197,185)"/>
+        <ellipse cx="185" cy="170" rx="18" ry="19" fill="#D4A96A" transform="rotate(-20,185,170)"/>
+        <path d="M172 168 Q165 180 163 192" stroke="#5C3200" stroke-width="4" fill="none" stroke-linecap="round" opacity=".9"/>
+        <path d="M183 188 Q170 200 160 210" stroke="#C49A6C" stroke-width="7" stroke-linecap="round"/>
+        <ellipse cx="158" cy="213" rx="12" ry="7" fill="#8B6914" opacity=".6"/>
+        <ellipse cx="158" cy="213" rx="8" ry="5" fill="#FFE08A" opacity=".18"/>
+        <path d="M200 0 L170 180 L230 180Z" fill="#FFE08A" opacity=".04"/>
+        <text x="200" y="274" text-anchor="middle" font-family="Georgia,serif" font-size="11.5" fill="#C9A84C" font-style="italic" opacity=".9">"Not my will, but Yours be done."</text>
+        <text x="200" y="290" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="rgba(255,255,255,.4)">— Luke 22:42  ·  Gethsemane</text>
+      </svg>
+      <p class="jesus-caption">"Even Jesus knelt down and prayed before the hardest moment of His life. Prayer is not weakness — it is your greatest strength, Starry."</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ BIBLE VERSES ══ -->
+<section class="s" id="verse-s">
+  <h2 class="sec-title float-anim">📖 God's Word — for Starry, Today</h2>
+  <div class="verse-wrap float-anim">
+    <div class="verse-card" id="vcard">
+      <p class="verse-eyebrow">✦ A Fresh Word Every Visit ✦</p>
+      <span class="verse-icon" id="vi">🕊️</span>
+      <blockquote class="verse-txt" id="vt">loading…</blockquote>
+      <p class="verse-ref" id="vr"></p>
+      <div class="v-nav">
+        <button class="v-btn" onclick="prevV()">← Prev</button>
+        <button class="v-btn" onclick="nextV()">Next →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LOVE NOTE ══ -->
+<section class="s" id="love-s">
+  <div class="love-card float-anim">
+    <p class="love-from">A note — just for you, Kuttii Idhayam 🤍</p>
+    <p class="love-txt">
+      You've just started this journey, Starry —<br/>
+      and that alone takes more courage than most people know.<br/><br/>
+      Don't rush. Don't compare yourself to anyone.<br/>
+      Don't be too hard on yourself when a day feels slow.<br/>
+      Every single page you read today is a seed being planted —<br/>
+      and God is the one who makes seeds grow.<br/><br/>
+      But please — rest too, Challam.<br/>
+      Drink water. Sleep. Eat properly. Take a breath.<br/>
+      You are more than your exam results,<br/>
+      and God loved you before any rank list ever existed.<br/><br/>
+      You said you're doing this for the glory of Jesus.<br/>
+      Then trust that He who called you is faithful —<br/>
+      He will complete what He started in you. 🕊️<br/><br/>
+      I believe in you — with everything I have.
+    </p>
+    <p class="love-sign">— Anurag, always in your corner ❤️</p>
+  </div>
+</section>
+
+</main>
+<footer>Made with love ✦ For Starry Judith ✦ IAS 2026 ✦ Soli Deo Gloria</footer>
+
+<script>
+// ═══════════════════════════════════════════
+// BACKGROUND CANVAS — deep space with drifting stars
+// ═══════════════════════════════════════════
+const bgCvs = document.getElementById('cvs-bg');
+const bgCtx = bgCvs.getContext('2d');
+let W, H;
+
+function resize() {
+  W = bgCvs.width = window.innerWidth;
+  H = bgCvs.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// ── Layers of stars at different depths ──
+const layers = [
+  { count: 120, speed: 0.012, maxR: 0.9,  alpha: 0.5,  col: '255,255,255' },
+  { count: 80,  speed: 0.025, maxR: 1.3,  alpha: 0.7,  col: '255,255,255' },
+  { count: 45,  speed: 0.045, maxR: 1.8,  alpha: 0.9,  col: '220,200,140' },
+  { count: 20,  speed: 0.07,  maxR: 2.2,  alpha: 1.0,  col: '201,168,76'  },
+];
+
+const allStars = [];
+layers.forEach(l => {
+  for (let i = 0; i < l.count; i++) {
+    allStars.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * l.maxR + 0.25,
+      baseAlpha: Math.random() * l.alpha * 0.5 + l.alpha * 0.4,
+      speed: l.speed,
+      col: l.col,
+      phase: Math.random() * Math.PI * 2,
+      twinkleSpeed: Math.random() * 0.003 + 0.001,
+      driftX: (Math.random() - 0.5) * l.speed * 0.6,
+      driftY: (Math.random() - 0.5) * l.speed * 0.4,
+    });
+  }
+});
+
+// shooting star
+let shoots = [];
+function spawnShoot() {
+  if (Math.random() < 0.004) {
+    const sx = Math.random() * W * 0.7;
+    const sy = Math.random() * H * 0.4;
+    shoots.push({ x: sx, y: sy, len: Math.random() * 120 + 60, life: 1, speed: Math.random() * 8 + 6 });
+  }
+}
+
+function drawBg(t) {
+  bgCtx.clearRect(0, 0, W, H);
+
+  allStars.forEach(s => {
+    // drift
+    s.x += s.driftX;
+    s.y += s.driftY;
+    if (s.x < 0) s.x = W;
+    if (s.x > W) s.x = 0;
+    if (s.y < 0) s.y = H;
+    if (s.y > H) s.y = 0;
+
+    const a = s.baseAlpha * (0.45 + 0.55 * Math.abs(Math.sin(t * s.twinkleSpeed + s.phase)));
+    bgCtx.beginPath();
+    bgCtx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+    bgCtx.fillStyle = `rgba(${s.col},${a})`;
+    bgCtx.fill();
+  });
+
+  // shooting stars
+  spawnShoot();
+  for (let i = shoots.length - 1; i >= 0; i--) {
+    const sh = shoots[i];
+    bgCtx.save();
+    bgCtx.globalAlpha = sh.life * 0.9;
+    const grad = bgCtx.createLinearGradient(sh.x, sh.y, sh.x + sh.len, sh.y + sh.len * 0.4);
+    grad.addColorStop(0, 'rgba(255,255,255,0)');
+    grad.addColorStop(1, 'rgba(255,240,180,0.9)');
+    bgCtx.strokeStyle = grad;
+    bgCtx.lineWidth = 1.5;
+    bgCtx.beginPath();
+    bgCtx.moveTo(sh.x, sh.y);
+    bgCtx.lineTo(sh.x + sh.len, sh.y + sh.len * 0.4);
+    bgCtx.stroke();
+    bgCtx.restore();
+    sh.x += sh.speed;
+    sh.y += sh.speed * 0.4;
+    sh.life -= 0.035;
+    if (sh.life <= 0) shoots.splice(i, 1);
+  }
+
+  requestAnimationFrame(drawBg);
+}
+requestAnimationFrame(drawBg);
+
+// ═══════════════════════════════════════════
+// FOREGROUND CANVAS — cursor / touch interaction
+// ═══════════════════════════════════════════
+const fgCvs = document.getElementById('cvs-fg');
+const fgCtx = fgCvs.getContext('2d');
+fgCvs.width = W; fgCvs.height = H;
+window.addEventListener('resize', () => { fgCvs.width = W; fgCvs.height = H; });
+
+let mouse = { x: -999, y: -999 };
+const PARTS = [];
+const PCOUNT = 180;
+const sparks = [];
+
+window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+window.addEventListener('touchmove', e => {
+  e.preventDefault();
+  mouse.x = e.touches[0].clientX;
+  mouse.y = e.touches[0].clientY;
+}, { passive: false });
+window.addEventListener('touchend', () => { mouse.x = -999; mouse.y = -999; });
+
+class Particle {
+  constructor() { this.reset(true); }
+  reset(init) {
+    this.ox = Math.random() * W;
+    this.oy = init ? Math.random() * H : Math.random() * H;
+    this.x = this.ox; this.y = this.oy;
+    this.r = Math.random() * 1.5 + 0.3;
+    this.a = Math.random() * 0.8 + 0.15;
+    this.drift = Math.random() * 0.35 + 0.08;
+    this.angle = Math.random() * Math.PI * 2;
+    this.va = (Math.random() - 0.5) * 0.007;
+    this.phase = Math.random() * Math.PI * 2;
+    this.twinkle = Math.random() * 0.006 + 0.002;
+    const t = Math.random();
+    this.col = t < 0.65 ? '255,255,255' : t < 0.83 ? '201,168,76' : '140,180,240';
+  }
+  update(t) {
+    this.angle += this.va;
+    this.x = this.ox + Math.cos(this.angle) * this.drift * 14;
+    this.y = this.oy + Math.sin(this.angle) * this.drift * 11;
+    // attract toward cursor/touch
+    const dx = mouse.x - this.x, dy = mouse.y - this.y;
+    const d = Math.sqrt(dx * dx + dy * dy);
+    if (d < 170) {
+      const f = (170 - d) / 170 * 0.65;
+      this.x += dx * f * 0.07;
+      this.y += dy * f * 0.07;
+    }
+    this.ca = this.a * (0.35 + 0.65 * Math.abs(Math.sin(t * this.twinkle + this.phase)));
+  }
+  draw() {
+    fgCtx.beginPath();
+    fgCtx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    fgCtx.fillStyle = `rgba(${this.col},${this.ca})`;
+    fgCtx.fill();
+  }
+}
+for (let i = 0; i < PCOUNT; i++) PARTS.push(new Particle());
+
+function burst(x, y) {
+  for (let i = 0; i < 22; i++) {
+    sparks.push({
+      x, y,
+      vx: (Math.random() - 0.5) * 6,
+      vy: (Math.random() - 0.5) * 6,
+      a: 1, r: Math.random() * 2.8 + 0.6,
+      col: Math.random() < 0.55 ? '201,168,76' : '255,255,255',
+      life: 0
+    });
+  }
+}
+window.addEventListener('click', e => burst(e.clientX, e.clientY));
+window.addEventListener('touchstart', e => burst(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
+
+function drawFg(t) {
+  fgCtx.clearRect(0, 0, W, H);
+
+  // faint connecting lines near cursor
+  for (let i = 0; i < PARTS.length; i++) {
+    for (let j = i + 1; j < PARTS.length; j++) {
+      const p = PARTS[i], q = PARTS[j];
+      const dx = p.x - q.x, dy = p.y - q.y, d = Math.sqrt(dx * dx + dy * dy);
+      if (d < 80) {
+        fgCtx.beginPath();
+        fgCtx.moveTo(p.x, p.y); fgCtx.lineTo(q.x, q.y);
+        fgCtx.strokeStyle = `rgba(201,168,76,${(1 - d / 80) * 0.1})`;
+        fgCtx.lineWidth = 0.6;
+        fgCtx.stroke();
+      }
+    }
+  }
+
+  PARTS.forEach(p => { p.update(t * 0.001); p.draw(); });
+
+  // golden sparks on tap
+  for (let i = sparks.length - 1; i >= 0; i--) {
+    const s = sparks[i];
+    s.x += s.vx; s.y += s.vy;
+    s.vx *= 0.91; s.vy *= 0.91;
+    s.a -= 0.026; s.life++;
+    if (s.a <= 0) { sparks.splice(i, 1); continue; }
+    fgCtx.beginPath();
+    fgCtx.arc(s.x, s.y, s.r * (1 - s.life / 38), 0, Math.PI * 2);
+    fgCtx.fillStyle = `rgba(${s.col},${s.a})`;
+    fgCtx.fill();
+  }
+
+  // soft glow ring around cursor
+  if (mouse.x > 0) {
+    const g = fgCtx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 80);
+    g.addColorStop(0, 'rgba(201,168,76,0.07)');
+    g.addColorStop(1, 'rgba(201,168,76,0)');
+    fgCtx.beginPath();
+    fgCtx.arc(mouse.x, mouse.y, 80, 0, Math.PI * 2);
+    fgCtx.fillStyle = g;
+    fgCtx.fill();
+  }
+
+  requestAnimationFrame(drawFg);
+}
+requestAnimationFrame(drawFg);
+
+// ═══ COUNTDOWN ═══
+function tick() {
+  const diff = new Date('2026-09-06T09:00:00') - new Date();
+  if (diff <= 0) { ['d','h','m','sec'].forEach(id => document.getElementById(id).textContent = '🎉'); return; }
+  const tot = Math.floor(diff / 1000);
+  document.getElementById('d').textContent   = String(Math.floor(tot / 86400)).padStart(2,'0');
+  document.getElementById('h').textContent   = String(Math.floor((tot % 86400) / 3600)).padStart(2,'0');
+  document.getElementById('m').textContent   = String(Math.floor((tot % 3600) / 60)).padStart(2,'0');
+  document.getElementById('sec').textContent = String(tot % 60).padStart(2,'0');
+}
+tick(); setInterval(tick, 1000);
+
+// ═══ BIBLE VERSES ═══
+const VV = [
+  {i:'🕊️',t:'"For I know the plans I have for you," declares the LORD, "plans to prosper you and not to harm you, plans to give you hope and a future."',r:'Jeremiah 29:11'},
+  {i:'💪',t:'"I can do all this through Him who gives me strength."',r:'Philippians 4:13'},
+  {i:'🌊',t:'"Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus."',r:'Philippians 4:6–7'},
+  {i:'🌟',t:'"Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go."',r:'Joshua 1:9'},
+  {i:'🦅',t:'"But those who hope in the LORD will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint."',r:'Isaiah 40:31'},
+  {i:'🙏',t:'"Cast all your anxiety on Him because He cares for you."',r:'1 Peter 5:7'},
+  {i:'🔥',t:'"For God has not given us a spirit of fear, but of power and of love and of a sound mind."',r:'2 Timothy 1:7'},
+  {i:'☀️',t:'"She is clothed with strength and dignity; she can laugh at the days to come."',r:'Proverbs 31:25'},
+  {i:'🌺',t:'"The LORD your God is with you, the Mighty Warrior who saves. He will take great delight in you; in His love He will rejoice over you with singing."',r:'Zephaniah 3:17'},
+  {i:'✝️',t:'"Come to me, all you who are weary and burdened, and I will give you rest."',r:'Matthew 11:28'},
+  {i:'💎',t:'"Trust in the LORD with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight."',r:'Proverbs 3:5–6'},
+  {i:'🌈',t:'"For we are God\'s handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do."',r:'Ephesians 2:10'},
+  {i:'⚡',t:'"The LORD is my strength and my shield; my heart trusts in him, and he helps me. My heart leaps for joy, and with my song I praise him."',r:'Psalm 28:7'},
+  {i:'🌙',t:'"He gives strength to the weary and increases the power of the weak."',r:'Isaiah 40:29'},
+];
+let vi = Math.floor(Math.random() * VV.length);
+function showV(i) {
+  const v = VV[i], c = document.getElementById('vcard');
+  c.style.cssText = 'transition:opacity .35s,transform .35s;opacity:0;transform:translateY(14px)';
+  setTimeout(() => {
+    document.getElementById('vi').textContent = v.i;
+    document.getElementById('vt').textContent = v.t;
+    document.getElementById('vr').textContent = v.r;
+    c.style.cssText = 'transition:opacity .4s,transform .4s;opacity:1;transform:translateY(0)';
+  }, 360);
+}
+function nextV() { vi = (vi + 1) % VV.length; showV(vi); }
+function prevV() { vi = (vi - 1 + VV.length) % VV.length; showV(vi); }
+showV(vi);
+
+// ═══ SCROLL FLOAT ═══
+document.querySelectorAll('#hero .float-anim').forEach((el, i) => setTimeout(() => el.classList.add('show'), 180 + i * 140));
+const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }), { threshold: 0.1 });
+document.querySelectorAll('.s:not(#hero) .float-anim').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
