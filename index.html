@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
-<title>For Starry Judith 🕊️</title>
+<title>For Starry Judith 🕊️ | With Music</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -49,7 +49,7 @@ main{position:relative;z-index:2}
 .cd-lbl{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.8}
 .cd-note{font-family:'Dancing Script',cursive;font-size:clamp(1rem,2.8vw,1.25rem);color:var(--rose);text-align:center;opacity:.85;margin-top:6px}
 
-/* JESUS SECTION with custom images + friendship (open to God's will) */
+/* JESUS SECTION with custom images + friendship */
 #jesus-s{text-align:center}
 .jesus-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.92rem,2.3vw,1.18rem);color:var(--soft);max-width:520px;line-height:1.75;margin-bottom:44px}
 .jesus-grid{display:grid;grid-template-columns:1fr;gap:30px;max-width:900px;width:100%;margin:0 auto}
@@ -59,13 +59,11 @@ main{position:relative;z-index:2}
 .custom-img-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
 .custom-caption{padding:18px;font-family:'Playfair Display',serif;font-style:italic;font-size:.9rem;color:var(--soft);line-height:1.65}
 
-/* 4:3 photo space */
 .her-photo-container{margin:40px auto 30px;max-width:380px;width:100%}
 .photo-4x3{aspect-ratio:4/3;border-radius:24px;overflow:hidden;border:3px solid var(--gold);box-shadow:0 0 30px rgba(201,168,76,.3);background:#0a0a1a}
 .photo-4x3 img{width:100%;height:100%;object-fit:cover;display:block}
 .photo-caption{font-family:'Dancing Script',cursive;font-size:1.1rem;color:var(--gold);margin-top:12px;letter-spacing:.5px}
 
-/* Devoted friendship card (no sibling language, no definitive "life partner", but open to future if God wills) */
 .friendship-card{background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(232,196,184,.03));border:1px solid rgba(201,168,76,.3);border-radius:32px;padding:28px 24px;margin:40px auto 0;max-width:600px;backdrop-filter:blur(8px)}
 .friendship-card p{font-family:'Playfair Display',serif;font-size:clamp(1rem,2.5vw,1.2rem);line-height:1.8;color:var(--rose);margin-bottom:16px}
 .friendship-card .friendship-signature{font-family:'Dancing Script',cursive;font-size:1.5rem;color:var(--gold);text-align:right;margin-top:12px}
@@ -93,6 +91,55 @@ footer{position:relative;z-index:2;text-align:center;padding:24px 20px 48px;font
 .bob1{animation:bob 4.5s ease-in-out infinite}
 .bob2{animation:bob 5.2s ease-in-out infinite .7s}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* floating music button - always visible */
+.music-control {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  background: rgba(10, 10, 30, 0.8);
+  backdrop-filter: blur(12px);
+  border-radius: 60px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 12px rgba(201,168,76,0.4);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px 8px 14px;
+  font-family: 'Inter', sans-serif;
+}
+.music-control:hover {
+  transform: scale(1.02);
+  border-color: var(--gold2);
+  background: rgba(20, 20, 45, 0.9);
+}
+.music-icon {
+  font-size: 1.7rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 4px rgba(201,168,76,0.5));
+}
+.music-status {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.playing-pulse {
+  animation: pulseGold 1s ease-in-out infinite alternate;
+}
+@keyframes pulseGold {
+  0% { text-shadow: 0 0 0px rgba(201,168,76,0);}
+  100% { text-shadow: 0 0 6px rgba(201,168,76,0.8);}
+}
+@media (max-width: 550px) {
+  .music-control { padding: 6px 14px 6px 12px; }
+  .music-icon { font-size: 1.4rem; }
+  .music-status { font-size: 0.6rem; }
+}
 </style>
 </head>
 <body>
@@ -105,6 +152,12 @@ footer{position:relative;z-index:2;text-align:center;padding:24px 20px 48px;font
 
 <canvas id="cvs-bg"></canvas>
 <canvas id="cvs-fg"></canvas>
+
+<!-- FLOATING MUSIC BUTTON (visible & functional) -->
+<div id="musicWidget" class="music-control">
+  <span id="musicIcon" class="music-icon">🎵</span>
+  <span id="musicText" class="music-status">Play music</span>
+</div>
 
 <main>
 <section class="s" id="hero">
@@ -134,27 +187,24 @@ footer{position:relative;z-index:2;text-align:center;padding:24px 20px 48px;font
   <!-- 4:3 PHOTO SPACE for her picture -->
   <div class="her-photo-container float-anim">
     <div class="photo-4x3">
-      <!-- REPLACE with your girlfriend's photo (4:3 ratio works best) -->
       <img src="starry.jpg" alt="Starry's beautiful face">
     </div>
     <p class="photo-caption">✨ My Starry, you are a gift from Heaven ✨</p>
   </div>
 
-  <!-- Custom image gallery (replace both images) -->
+  <!-- Custom image gallery -->
   <div class="jesus-grid">
     <div class="custom-img-card float-anim bob1">
-      <!-- REPLACE with your custom image (e.g., Jesus walking with her) -->
       <img src="jesus_walk.jpg" alt="Jesus Loves You">
       <div class="custom-caption">"I am with you always, my daughter. Every step, every tear, every triumph."</div>
     </div>
     <div class="custom-img-card float-anim bob2">
-      <!-- REPLACE with your second custom image -->
       <img src="jesus_hold.jpg" alt="Jesus Loves You more">
       <div class="custom-caption">"Fear not, for I have redeemed you. I have called you by name; you are Mine." — Isaiah 43:1</div>
     </div>
   </div>
 
-  <!-- DEVOTED FRIENDSHIP CARD - no sibling language, no "life partner" declaration, just deep love and openness to God's will -->
+  <!-- DEVOTED FRIENDSHIP CARD -->
   <div class="friendship-card float-anim">
     <p>🌙 My dearest Challam, my Kuttii Idhayam — I love you. You are my closest friend, my greatest joy after Jesus, and you became the one i think of first when I wake and last when I sleep after Jesus.</p>
     <p>I don't know what the future holds — only the Lord does. But if He wills, I would walk every path with you. For now, I am simply yours: your supporter, your encourager, the one who believes in your calling more than anyone. Whether as friends today or something more tomorrow, I will always love you — purely, patiently, and with all my heart.</p>
@@ -260,10 +310,13 @@ footer{position:relative;z-index:2;text-align:center;padding:24px 20px 48px;font
 </main>
 <footer>Made with love ✦ For Starry Judith ✦ IAS 2026 ✦ Soli Deo Gloria</footer>
 
-<audio id="bgSong" src="iwannabeyours.mp3" loop autoplay></audio>
+<audio id="bgSong" loop preload="auto">
+  <source src="iwannabeyours.mp3" type="audio/mpeg">
+  Your browser does not support audio.
+</audio>
 
 <script>
-// ========== CANVAS & PARTICLE SYSTEM (same as before) ==========
+// ========== CANVAS & PARTICLE SYSTEM (unchanged, fully preserved) ==========
 const bgCvs = document.getElementById('cvs-bg');
 const bgCtx = bgCvs.getContext('2d');
 const fgCvs = document.getElementById('cvs-fg');
@@ -305,7 +358,7 @@ requestAnimationFrame(drawFg);
 function tick(){ const target=new Date('2026-09-06T09:00:00+05:30'); const diff=target-new Date(); if(diff<=0){ ['d','h','m','sec'].forEach(id=>document.getElementById(id).textContent='🎉'); return; } const tot=Math.floor(diff/1000); document.getElementById('d').textContent=String(Math.floor(tot/86400)).padStart(2,'0'); document.getElementById('h').textContent=String(Math.floor((tot%86400)/3600)).padStart(2,'0'); document.getElementById('m').textContent=String(Math.floor((tot%3600)/60)).padStart(2,'0'); document.getElementById('sec').textContent=String(tot%60).padStart(2,'0'); }
 tick(); setInterval(tick,1000);
 
-// Bible verses (includes Isaiah 41:10)
+// Bible verses
 const verses=[
   {i:'🕊️',t:'"So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with my righteous right hand."',r:'Isaiah 41:10'},
   {i:'💪',t:'"I can do all this through Him who gives me strength."',r:'Philippians 4:13'},
@@ -326,21 +379,103 @@ window.nextV=()=>{ verseIdx=(verseIdx+1)%verses.length; showVerse(verseIdx); };
 window.prevV=()=>{ verseIdx=(verseIdx-1+verses.length)%verses.length; showVerse(verseIdx); };
 showVerse(verseIdx);
 
-// Autoplay music - no button, just try to play
-const audioEl = document.getElementById('bgSong');
-audioEl.volume = 0.5;
-audioEl.play().catch(() => {
-  // if autoplay blocked, try on first user touch/click anywhere (still no button)
-  const resume = () => {
-    audioEl.play().catch(()=>{});
-    document.body.removeEventListener('click', resume);
-    document.body.removeEventListener('touchstart', resume);
-  };
-  document.body.addEventListener('click', resume);
-  document.body.addEventListener('touchstart', resume);
+// ========== FIXED AUDIO: ROBUST PLAYER WITH BUTTON & FALLBACK ==========
+const audio = document.getElementById('bgSong');
+audio.volume = 0.45;
+audio.loop = true;
+let isPlaying = false;
+let audioFailed = false;
+
+const musicIconSpan = document.getElementById('musicIcon');
+const musicTextSpan = document.getElementById('musicText');
+
+function updateMusicUI() {
+  if (audioFailed) {
+    musicIconSpan.innerHTML = '⚠️';
+    musicTextSpan.innerHTML = 'Missing file';
+    musicTextSpan.classList.remove('playing-pulse');
+    return;
+  }
+  if (isPlaying) {
+    musicIconSpan.innerHTML = '🎶';
+    musicTextSpan.innerHTML = 'Playing ♪';
+    musicTextSpan.classList.add('playing-pulse');
+  } else {
+    musicIconSpan.innerHTML = '🎵';
+    musicTextSpan.innerHTML = 'Play music';
+    musicTextSpan.classList.remove('playing-pulse');
+  }
+}
+
+function playAudio() {
+  if (audioFailed) return;
+  audio.play().then(() => {
+    isPlaying = true;
+    updateMusicUI();
+  }).catch(err => {
+    console.warn("Play failed:", err);
+    isPlaying = false;
+    updateMusicUI();
+  });
+}
+
+function pauseAudio() {
+  audio.pause();
+  isPlaying = false;
+  updateMusicUI();
+}
+
+function togglePlay() {
+  if (audioFailed) {
+    alert("Audio file not found. Please make sure 'iwannabeyours.mp3' is in the same folder.");
+    return;
+  }
+  if (isPlaying) {
+    pauseAudio();
+  } else {
+    playAudio();
+  }
+}
+
+// Detect if audio file is loadable
+audio.addEventListener('canplaythrough', () => {
+  audioFailed = false;
+  updateMusicUI();
+});
+audio.addEventListener('error', (e) => {
+  console.error("Audio error – missing or corrupt file", e);
+  audioFailed = true;
+  updateMusicUI();
 });
 
-// scroll animations
+// Manual button click
+const widgetBtn = document.getElementById('musicWidget');
+widgetBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  togglePlay();
+});
+
+// Attempt autoplay (often blocked)
+playAudio();
+
+// Global fallback: on any user interaction (click/touch anywhere) try to play if not playing
+function globalResumeHandler() {
+  if (!isPlaying && !audioFailed) {
+    playAudio();
+  }
+  // remove after first interaction to avoid overhead
+  document.body.removeEventListener('click', globalResumeHandler);
+  document.body.removeEventListener('touchstart', globalResumeHandler);
+}
+document.body.addEventListener('click', globalResumeHandler);
+document.body.addEventListener('touchstart', globalResumeHandler);
+
+// Sync UI if audio state changes externally
+audio.addEventListener('play', () => { isPlaying = true; updateMusicUI(); });
+audio.addEventListener('pause', () => { isPlaying = false; updateMusicUI(); });
+updateMusicUI();
+
+// scroll animations (preserved)
 document.querySelectorAll('#hero .float-anim').forEach((el,i)=>setTimeout(()=>el.classList.add('show'),180+i*140));
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); }),{threshold:0.1});
 document.querySelectorAll('.s:not(#hero) .float-anim').forEach(el=>obs.observe(el));
