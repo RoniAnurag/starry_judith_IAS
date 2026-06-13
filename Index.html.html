@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"/>
+<title>For Starry Judith 🕊️</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#C9A84C;--gold2:#E8C87A;--deep:#03030E;--rose:#E8C4B8;--soft:rgba(255,255,255,0.75);--white:#fff;}
+html{scroll-behavior:smooth}
+body{background:var(--deep);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden}
+
+#cvs-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.nebula{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:-1;will-change:transform,opacity}
+.nb1{width:600px;height:600px;background:radial-gradient(circle,rgba(30,60,140,.45),transparent 70%);top:-10%;left:-15%;animation:nb1 18s ease-in-out infinite alternate}
+.nb2{width:500px;height:500px;background:radial-gradient(circle,rgba(80,30,120,.35),transparent 70%);top:30%;right:-10%;animation:nb2 22s ease-in-out infinite alternate}
+.nb3{width:700px;height:400px;background:radial-gradient(circle,rgba(160,100,20,.18),transparent 70%);bottom:10%;left:20%;animation:nb3 26s ease-in-out infinite alternate}
+.nb4{width:400px;height:400px;background:radial-gradient(circle,rgba(20,80,100,.3),transparent 70%);bottom:-5%;right:5%;animation:nb4 20s ease-in-out infinite alternate}
+@keyframes nb1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(80px,60px) scale(1.15)}}
+@keyframes nb2{0%{transform:translate(0,0) scale(1.1)}100%{transform:translate(-70px,80px) scale(.95)}}
+@keyframes nb3{0%{transform:translate(0,0) scale(1)}100%{transform:translate(60px,-50px) scale(1.1)}}
+@keyframes nb4{0%{transform:translate(0,0) scale(.95)}100%{transform:translate(-50px,-60px) scale(1.1)}}
+
+.aurora{position:fixed;top:0;left:-20%;width:140%;height:220px;background:linear-gradient(180deg,rgba(60,120,255,.13) 0%,rgba(100,60,200,.09) 40%,transparent 100%);filter:blur(18px);z-index:-1;pointer-events:none;animation:aur 12s ease-in-out infinite alternate}
+@keyframes aur{0%{opacity:.5;transform:scaleX(1) translateY(0)}100%{opacity:1;transform:scaleX(1.08) translateY(18px)}}
+
+#cvs-fg{position:fixed;inset:0;z-index:1;pointer-events:none}
+main{position:relative;z-index:2}
+
+.s{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;position:relative}
+#hero{text-align:center}
+.hero-dove{font-size:clamp(2.4rem,7vw,4rem);margin-bottom:10px;animation:hvr 3.5s ease-in-out infinite}
+@keyframes hvr{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+.for-label{font-family:'Dancing Script',cursive;font-size:clamp(1rem,3vw,1.35rem);color:var(--gold);letter-spacing:.1em;margin-bottom:10px;opacity:.85}
+.hero-name{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(3rem,12vw,7rem);line-height:1.02;background:linear-gradient(135deg,#fff 20%,var(--gold2) 55%,#fff 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px}
+.hero-nick{font-family:'Dancing Script',cursive;font-size:clamp(1.1rem,3.5vw,1.7rem);color:var(--rose);margin-bottom:26px}
+.hero-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.92rem,2.3vw,1.18rem);color:var(--soft);max-width:520px;line-height:1.75;margin-bottom:50px}
+.scroll-cue{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);opacity:.6;animation:pc 2s ease-in-out infinite}
+@keyframes pc{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:.9;transform:translateY(6px)}}
+
+#countdown-s{background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(13,27,62,.5),transparent)}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,3.5vw,1.9rem);color:var(--gold);text-align:center;letter-spacing:.04em;margin-bottom:44px}
+.cd-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:640px;width:100%;margin:0 auto 28px}
+@media(min-width:500px){.cd-grid{grid-template-columns:repeat(4,1fr)}}
+.cd-card{background:rgba(255,255,255,.06);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:28px 12px 22px;text-align:center;backdrop-filter:blur(12px);transition:transform .25s,border-color .25s,box-shadow .25s;cursor:default}
+.cd-card:hover{transform:translateY(-6px);border-color:rgba(201,168,76,.7);box-shadow:0 0 32px rgba(201,168,76,.2)}
+.cd-num{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,8vw,4rem);font-weight:700;line-height:1;margin-bottom:8px;background:linear-gradient(180deg,#fff 40%,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cd-lbl{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.8}
+.cd-note{font-family:'Dancing Script',cursive;font-size:clamp(1rem,2.8vw,1.25rem);color:var(--rose);text-align:center;opacity:.85;margin-top:6px}
+
+/* JESUS SECTION with custom images + friendship (open to God's will) */
+#jesus-s{text-align:center}
+.jesus-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.92rem,2.3vw,1.18rem);color:var(--soft);max-width:520px;line-height:1.75;margin-bottom:44px}
+.jesus-grid{display:grid;grid-template-columns:1fr;gap:30px;max-width:900px;width:100%;margin:0 auto}
+@media(min-width:768px){.jesus-grid{grid-template-columns:repeat(2,1fr)}}
+.custom-img-card{border-radius:18px;overflow:hidden;border:1px solid rgba(201,168,76,.3);background:rgba(255,255,255,.05);transition:transform .3s,box-shadow .3s}
+.custom-img-card:hover{transform:translateY(-6px) scale(1.015);box-shadow:0 16px 48px rgba(0,0,0,.55)}
+.custom-img-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.custom-caption{padding:18px;font-family:'Playfair Display',serif;font-style:italic;font-size:.9rem;color:var(--soft);line-height:1.65}
+
+/* 4:3 photo space */
+.her-photo-container{margin:40px auto 30px;max-width:380px;width:100%}
+.photo-4x3{aspect-ratio:4/3;border-radius:24px;overflow:hidden;border:3px solid var(--gold);box-shadow:0 0 30px rgba(201,168,76,.3);background:#0a0a1a}
+.photo-4x3 img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-caption{font-family:'Dancing Script',cursive;font-size:1.1rem;color:var(--gold);margin-top:12px;letter-spacing:.5px}
+
+/* Devoted friendship card (no sibling language, no definitive "life partner", but open to future if God wills) */
+.friendship-card{background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(232,196,184,.03));border:1px solid rgba(201,168,76,.3);border-radius:32px;padding:28px 24px;margin:40px auto 0;max-width:600px;backdrop-filter:blur(8px)}
+.friendship-card p{font-family:'Playfair Display',serif;font-size:clamp(1rem,2.5vw,1.2rem);line-height:1.8;color:var(--rose);margin-bottom:16px}
+.friendship-card .friendship-signature{font-family:'Dancing Script',cursive;font-size:1.5rem;color:var(--gold);text-align:right;margin-top:12px}
+
+#verse-s{background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(201,168,76,.07),transparent)}
+.verse-wrap{max-width:660px;width:100%}
+.verse-card{background:rgba(255,255,255,.045);border:1px solid rgba(201,168,76,.3);border-radius:22px;padding:clamp(28px,5vw,54px) clamp(22px,5vw,52px);text-align:center;backdrop-filter:blur(14px);overflow:hidden;position:relative;transition:opacity .4s cubic-bezier(.2,.9,.3,1.1), transform .4s cubic-bezier(.2,.9,.3,1.1)}
+.verse-card::before{content:'\201C';position:absolute;top:-24px;left:14px;font-size:11rem;color:var(--gold);opacity:.05;font-family:'Playfair Display',serif;line-height:1;pointer-events:none}
+.verse-eyebrow{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;opacity:.8}
+.verse-icon{font-size:2.6rem;margin-bottom:18px;display:block}
+.verse-txt{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1rem,2.6vw,1.38rem);line-height:1.75;color:var(--white);margin-bottom:18px}
+.verse-ref{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.v-nav{display:flex;gap:12px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+.v-btn{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.4);color:var(--gold);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:10px 22px;border-radius:40px;cursor:pointer;transition:background .2s,transform .15s;font-family:'Inter',sans-serif}
+.v-btn:hover{background:rgba(201,168,76,.25);transform:translateY(-2px)}
+
+#love-s{background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(232,196,184,.07),transparent)}
+.love-card{max-width:600px;width:100%;padding:clamp(30px,5vw,54px) clamp(24px,5vw,50px);border:1px solid rgba(232,196,184,.25);border-radius:22px;background:rgba(232,196,184,.04);text-align:center}
+.love-from{font-family:'Dancing Script',cursive;font-size:clamp(1.2rem,3.5vw,1.7rem);color:var(--rose);margin-bottom:14px}
+.love-txt{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.92rem,2.2vw,1.12rem);color:var(--soft);line-height:1.85;margin-bottom:24px}
+.love-sign{font-family:'Dancing Script',cursive;font-size:clamp(1.3rem,3.5vw,1.9rem);color:var(--gold)}
+footer{position:relative;z-index:2;text-align:center;padding:24px 20px 48px;font-size:.72rem;color:rgba(255,255,255,.22);letter-spacing:.08em}
+.float-anim{opacity:0;transform:translateY(38px);transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1)}
+.float-anim.show{opacity:1;transform:translateY(0)}
+.bob1{animation:bob 4.5s ease-in-out infinite}
+.bob2{animation:bob 5.2s ease-in-out infinite .7s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+</style>
+</head>
+<body>
+
+<div class="nebula nb1"></div>
+<div class="nebula nb2"></div>
+<div class="nebula nb3"></div>
+<div class="nebula nb4"></div>
+<div class="aurora"></div>
+
+<canvas id="cvs-bg"></canvas>
+<canvas id="cvs-fg"></canvas>
+
+<main>
+<section class="s" id="hero">
+  <div class="hero-dove float-anim">🕊️</div>
+  <p class="for-label float-anim">This page was made with love, for</p>
+  <h1 class="hero-name float-anim">Starry Judith</h1>
+  <p class="hero-nick float-anim">my Challam &nbsp;·&nbsp; my Kuttii Idhayam 🤍</p>
+  <p class="hero-sub float-anim">"She is not just studying for an exam —<br/>she is walking in faith, for the glory of God<br/>and for the glory of Jesus Christ."</p>
+  <p class="scroll-cue">↓ scroll down, Challam ↓</p>
+</section>
+
+<section class="s" id="countdown-s">
+  <h2 class="sec-title float-anim">⏳ Your IAS Exam Countdown</h2>
+  <div class="cd-grid">
+    <div class="cd-card float-anim bob1"><div class="cd-num" id="d">--</div><div class="cd-lbl">Days</div></div>
+    <div class="cd-card float-anim bob2"><div class="cd-num" id="h">--</div><div class="cd-lbl">Hours</div></div>
+    <div class="cd-card float-anim bob3"><div class="cd-num" id="m">--</div><div class="cd-lbl">Minutes</div></div>
+    <div class="cd-card float-anim bob4"><div class="cd-num" id="sec">--</div><div class="cd-lbl">Seconds</div></div>
+  </div>
+  <p class="cd-note float-anim">September 6, 2026 — All the Best daa Starry Judith 🌟</p>
+</section>
+
+<section class="s" id="jesus-s">
+  <h2 class="sec-title float-anim">✝️ He Walks With You, Starry ✝️</h2>
+  <p class="jesus-quote float-anim">"The same Jesus who calmed the storm, who raised Lazarus — He walks with you, and I walk beside you in prayer and faith, trusting His perfect plan for us."</p>
+
+  <!-- 4:3 PHOTO SPACE for her picture -->
+  <div class="her-photo-container float-anim">
+    <div class="photo-4x3">
+      <!-- REPLACE with your girlfriend's photo (4:3 ratio works best) -->
+      <img src="starry_judith_IAS/WhatsApp Image 2026-05-24 at 2.10.22 AM 15.jpeg" alt="Starry's beautiful face">
+    </div>
+    <p class="photo-caption">✨ My Starry, you are a gift from Heaven ✨</p>
+  </div>
+
+  <!-- Custom image gallery (replace both images) -->
+  <div class="jesus-grid">
+    <div class="custom-img-card float-anim bob1">
+      <!-- REPLACE with your custom image (e.g., Jesus walking with her) -->
+      <img src="https://via.placeholder.com/400x300?text=Jesus+Image+1" alt="Jesus walking with Starry">
+      <div class="custom-caption">"I am with you always, my daughter. Every step, every tear, every triumph."</div>
+    </div>
+    <div class="custom-img-card float-anim bob2">
+      <!-- REPLACE with your second custom image -->
+      <img src="https://via.placeholder.com/400x300?text=Jesus+Image+2" alt="Jesus holding her hand">
+      <div class="custom-caption">"Fear not, for I have redeemed you. I have called you by name; you are Mine." — Isaiah 43:1</div>
+    </div>
+  </div>
+
+  <!-- DEVOTED FRIENDSHIP CARD - no sibling language, no "life partner" declaration, just deep love and openness to God's will -->
+  <div class="friendship-card float-anim">
+    <p>🌙 My dearest Challam, my Kuttii Idhayam — I love you. You are my closest friend, my greatest joy after Jesus, and you became the one i think of first when I wake and last when I sleep after Jesus.</p>
+    <p>I don't know what the future holds — only the Lord does. But if He wills, I would walk every path with you. For now, I am simply yours: your supporter, your encourager, the one who believes in your calling more than anyone. Whether as friends today or something more tomorrow, I will always love you — purely, patiently, and with all my heart.</p>
+    <p>You are studying for His glory, Which I am very proud of you And I am praying for you, fasting for you, and dreaming with you And always with you — trusting that His plan is greater than anything we can imagine. 🤍</p>
+    <div class="friendship-signature">— Anurag </div>
+  </div>
+</section>
+
+<section class="s" id="verse-s">
+  <h2 class="sec-title float-anim">📖 God's Word — for Starry, Today</h2>
+  <div class="verse-wrap float-anim">
+    <div class="verse-card" id="vcard">
+      <p class="verse-eyebrow">✦ A Fresh Word Every Visit ✦</p>
+      <span class="verse-icon" id="vi">🕊️</span>
+      <blockquote class="verse-txt" id="vt">loading…</blockquote>
+      <p class="verse-ref" id="vr"></p>
+      <div class="v-nav"><button class="v-btn" onclick="prevV()">← Prev</button><button class="v-btn" onclick="nextV()">Next →</button></div>
+    </div>
+  </div>
+  <!-- Highlighted Isaiah 41:10-13 -->
+  <div style="margin-top: 30px; max-width: 600px; background: rgba(201,168,76,0.1); border-left: 4px solid var(--gold); padding: 20px; border-radius: 16px;">
+    <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; line-height: 1.7;">
+      <strong>✨ Specially for you, Starry ✨</strong><br><br>
+      “So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with my righteous right hand. All who rage against you will surely be ashamed and disgraced; those who oppose you will be as nothing and perish. Though you search for your enemies, you will not find them. Those who wage war against you will be as nothing at all. For I am the LORD your God who takes hold of your right hand and says to you, Do not fear; I will help you.”<br>
+      — <strong>Isaiah 41:10-13</strong>
+    </p>
+  </div>
+</section>
+
+<section class="s" id="love-s">
+  <div class="love-card float-anim">
+    <p class="love-from">A note — just for you, Kuttii Idhayam 🤍</p>
+
+    <p class="love-txt">
+      You've just started this journey, Starry —<br/>
+      and that alone takes more courage than most people know.<br/><br/>
+
+      Don't rush. Don't compare yourself to anyone.<br/>
+      Don't be too hard on yourself when a day feels slow.<br/>
+      Every single page you read today is a seed being planted —<br/>
+      and God is the one who makes seeds grow.<br/><br/>
+
+      But please — rest too, Challam.<br/>
+      Drink water. Sleep. Eat properly. Take a breath.<br/>
+      You are more than your exam results,<br/>
+      and God loved you before any rank list ever existed.<br/><br/>
+
+      I don't want you to fear anything.<br/>
+      God will never let your time go in vain.<br/>
+      He has chosen you, and He will establish you in His perfect time.<br/><br/>
+
+      You have never lived only for yourself.<br/>
+      Your desire has always been to honor the Lord and glorify His name.<br/>
+      Because of that, I believe He will also be faithful to lift you up,<br/>
+      strengthen you, and use your life for His glory even more.<br/><br/>
+
+      You said you're doing this for the glory of Jesus.<br/>
+      Then trust that He who called you is faithful —<br/>
+      He will complete what He started in you. 🕊️<br/><br/>
+
+      I truly believe there is a strong and beautiful calling upon your life.<br/>
+      The God who planted that calling in your heart will not abandon His work halfway.<br/>
+      He will finish what He has started in you.<br/><br/>
+
+      Let us continue to fast, pray, trust, and walk with Him together.<br/>
+      Remember that every achievement, every victory, every blessing,<br/>
+      and every success is ultimately for His glory alone.<br/><br/>
+
+      When fear comes, remember Job.<br/>
+      Remember Shadrach, Meshach, and Abednego.<br/>
+      The same God who was with them is with you today.<br/><br/>
+
+      <span class="verse">
+        “Fear not, for you will not be ashamed;<br/>
+        be not confounded, for you will not be disgraced;<br/>
+        for you will forget the shame of your youth...”<br/>
+        — Isaiah 54:4
+      </span><br/><br/>
+
+      Let us grow firmer in Christ Jesus day by day.<br/>
+      Let our faith become deeper, our prayers stronger,<br/>
+      and our trust in Him greater than ever before.<br/><br/>
+
+      And one more thing, Kuttii Idhayam...<br/><br/>
+
+      I love you so much.<br/>
+      More than words can express, I care for you,<br/>
+      pray for you, and believe in you.<br/>
+      No exam, no challenge, and no season of uncertainty can change that.<br/><br/>
+
+      Keep your eyes on Jesus.<br/>
+      Keep moving forward.<br/>
+      Keep believing.<br/><br/>
+
+      The Lord is with you, and so am I. ❤️
+    </p>
+
+    <p class="love-sign">
+      — Anurag, always in your corner, forever and always ❤️
+    </p>
+  </div>
+</section>
+</main>
+<footer>Made with love ✦ For Starry Judith ✦ IAS 2026 ✦ Soli Deo Gloria</footer>
+
+<audio id="bgSong" src="iwannabeyours.mp3" loop autoplay></audio>
+
+<script>
+// ========== CANVAS & PARTICLE SYSTEM (same as before) ==========
+const bgCvs = document.getElementById('cvs-bg');
+const bgCtx = bgCvs.getContext('2d');
+const fgCvs = document.getElementById('cvs-fg');
+const fgCtx = fgCvs.getContext('2d');
+let W, H;
+function updateCanvasSize() { W = bgCvs.width = fgCvs.width = window.innerWidth; H = bgCvs.height = fgCvs.height = window.innerHeight; }
+updateCanvasSize();
+window.addEventListener('resize', () => { updateCanvasSize(); resetAllStarsAndParticles(); });
+
+const layers = [
+  { count: 120, speed: 0.012, maxR: 0.9, alpha: 0.5, col: '255,255,255' },
+  { count: 80, speed: 0.025, maxR: 1.3, alpha: 0.7, col: '255,255,255' },
+  { count: 45, speed: 0.045, maxR: 1.8, alpha: 0.9, col: '220,200,140' },
+  { count: 20, speed: 0.07, maxR: 2.2, alpha: 1.0, col: '201,168,76' }
+];
+let allStars = [];
+function initStars() { allStars = []; layers.forEach(l => { for(let i=0;i<l.count;i++) allStars.push({ x:Math.random()*W, y:Math.random()*H, r:Math.random()*l.maxR+0.25, baseAlpha:Math.random()*l.alpha*0.5+l.alpha*0.4, col:l.col, phase:Math.random()*Math.PI*2, twinkleSpeed:Math.random()*0.003+0.001, driftX:(Math.random()-0.5)*l.speed*0.6, driftY:(Math.random()-0.5)*l.speed*0.4 }); }); }
+initStars();
+let shoots = [];
+function spawnShoot() { if(Math.random()<0.004) shoots.push({ x:Math.random()*W*0.7, y:Math.random()*H*0.4, len:Math.random()*120+60, life:1, speed:Math.random()*8+6 }); }
+function drawBg(t) { bgCtx.clearRect(0,0,W,H); allStars.forEach(s=>{ s.x+=s.driftX; s.y+=s.driftY; if(s.x<0)s.x=W; if(s.x>W)s.x=0; if(s.y<0)s.y=H; if(s.y>H)s.y=0; const a=s.baseAlpha*(0.45+0.55*Math.abs(Math.sin(t*s.twinkleSpeed+s.phase))); bgCtx.beginPath(); bgCtx.arc(s.x,s.y,s.r,0,Math.PI*2); bgCtx.fillStyle=`rgba(${s.col},${a})`; bgCtx.fill(); }); spawnShoot(); for(let i=shoots.length-1;i>=0;i--){ const sh=shoots[i]; bgCtx.save(); bgCtx.globalAlpha=sh.life*0.9; const grad=bgCtx.createLinearGradient(sh.x,sh.y,sh.x+sh.len,sh.y+sh.len*0.4); grad.addColorStop(0,'rgba(255,255,255,0)'); grad.addColorStop(1,'rgba(255,240,180,0.9)'); bgCtx.strokeStyle=grad; bgCtx.lineWidth=1.5; bgCtx.beginPath(); bgCtx.moveTo(sh.x,sh.y); bgCtx.lineTo(sh.x+sh.len,sh.y+sh.len*0.4); bgCtx.stroke(); bgCtx.restore(); sh.x+=sh.speed; sh.y+=sh.speed*0.4; sh.life-=0.035; if(sh.life<=0) shoots.splice(i,1); } requestAnimationFrame(drawBg); }
+requestAnimationFrame(drawBg);
+
+let mouse={x:-999,y:-999}, particles=[], sparks=[];
+window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
+window.addEventListener('touchmove',e=>{ if(e.touches.length){ mouse.x=e.touches[0].clientX; mouse.y=e.touches[0].clientY; } },{passive:true});
+window.addEventListener('touchend',()=>{mouse.x=-999;mouse.y=-999;});
+class Particle { constructor(){ this.reset(true); } reset(init){ this.ox=Math.random()*W; this.oy=init?Math.random()*H:Math.random()*H; this.x=this.ox; this.y=this.oy; this.r=Math.random()*1.5+0.3; this.a=Math.random()*0.8+0.15; this.drift=Math.random()*0.35+0.08; this.angle=Math.random()*Math.PI*2; this.va=(Math.random()-0.5)*0.007; this.phase=Math.random()*Math.PI*2; this.twinkle=Math.random()*0.006+0.002; const t=Math.random(); this.col=t<0.65?'255,255,255':t<0.83?'201,168,76':'140,180,240'; } update(t){ this.angle+=this.va; this.x=this.ox+Math.cos(this.angle)*this.drift*14; this.y=this.oy+Math.sin(this.angle)*this.drift*11; const dx=mouse.x-this.x, dy=mouse.y-this.y, d=Math.sqrt(dx*dx+dy*dy); if(d<170){ const f=(170-d)/170*0.65; this.x+=dx*f*0.07; this.y+=dy*f*0.07; } if(this.x<-50) this.x=W+50; if(this.x>W+50) this.x=-50; if(this.y<-50) this.y=H+50; if(this.y>H+50) this.y=-50; this.ca=this.a*(0.35+0.65*Math.abs(Math.sin(t*this.twinkle+this.phase))); } draw(){ fgCtx.beginPath(); fgCtx.arc(this.x,this.y,this.r,0,Math.PI*2); fgCtx.fillStyle=`rgba(${this.col},${this.ca})`; fgCtx.fill(); } }
+function initParticles(){ particles=[]; for(let i=0;i<180;i++) particles.push(new Particle()); }
+initParticles();
+function resetAllStarsAndParticles(){ initStars(); initParticles(); sparks=[]; shoots=[]; mouse={x:-999,y:-999}; }
+function burst(x,y){ for(let i=0;i<22;i++) sparks.push({ x,y, vx:(Math.random()-0.5)*6, vy:(Math.random()-0.5)*6, a:1, r:Math.random()*2.8+0.6, col:Math.random()<0.55?'201,168,76':'255,255,255' }); }
+window.addEventListener('click',e=>burst(e.clientX,e.clientY));
+window.addEventListener('touchstart',e=>{ if(e.touches.length) burst(e.touches[0].clientX,e.touches[0].clientY); },{passive:true});
+function drawFg(t){ fgCtx.clearRect(0,0,W,H); for(let i=0;i<particles.length;i++) for(let j=i+1;j<particles.length;j++){ const p=particles[i], q=particles[j]; const dx=p.x-q.x, dy=p.y-q.y, d=Math.sqrt(dx*dx+dy*dy); if(d<80){ fgCtx.beginPath(); fgCtx.moveTo(p.x,p.y); fgCtx.lineTo(q.x,q.y); fgCtx.strokeStyle=`rgba(201,168,76,${(1-d/80)*0.1})`; fgCtx.lineWidth=0.6; fgCtx.stroke(); } } particles.forEach(p=>{ p.update(t*0.001); p.draw(); }); for(let i=sparks.length-1;i>=0;i--){ const s=sparks[i]; s.x+=s.vx; s.y+=s.vy; s.vx*=0.91; s.vy*=0.91; s.a-=0.026; if(s.a<=0){ sparks.splice(i,1); continue; } fgCtx.beginPath(); fgCtx.arc(s.x,s.y,s.r*s.a,0,Math.PI*2); fgCtx.fillStyle=`rgba(${s.col},${s.a})`; fgCtx.fill(); } if(mouse.x>0&&mouse.x<W&&mouse.y>0&&mouse.y<H){ const grad=fgCtx.createRadialGradient(mouse.x,mouse.y,0,mouse.x,mouse.y,80); grad.addColorStop(0,'rgba(201,168,76,0.07)'); grad.addColorStop(1,'rgba(201,168,76,0)'); fgCtx.beginPath(); fgCtx.arc(mouse.x,mouse.y,80,0,Math.PI*2); fgCtx.fillStyle=grad; fgCtx.fill(); } requestAnimationFrame(drawFg); }
+requestAnimationFrame(drawFg);
+
+// Countdown (IST)
+function tick(){ const target=new Date('2026-09-06T09:00:00+05:30'); const diff=target-new Date(); if(diff<=0){ ['d','h','m','sec'].forEach(id=>document.getElementById(id).textContent='🎉'); return; } const tot=Math.floor(diff/1000); document.getElementById('d').textContent=String(Math.floor(tot/86400)).padStart(2,'0'); document.getElementById('h').textContent=String(Math.floor((tot%86400)/3600)).padStart(2,'0'); document.getElementById('m').textContent=String(Math.floor((tot%3600)/60)).padStart(2,'0'); document.getElementById('sec').textContent=String(tot%60).padStart(2,'0'); }
+tick(); setInterval(tick,1000);
+
+// Bible verses (includes Isaiah 41:10)
+const verses=[
+  {i:'🕊️',t:'"So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with my righteous right hand."',r:'Isaiah 41:10'},
+  {i:'💪',t:'"I can do all this through Him who gives me strength."',r:'Philippians 4:13'},
+  {i:'🌊',t:'"Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus."',r:'Philippians 4:6–7'},
+  {i:'🌟',t:'"Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go."',r:'Joshua 1:9'},
+  {i:'🦅',t:'"But those who hope in the LORD will renew their strength. They will soar on wings like eagles; they will run and not grow weary, they will walk and not be faint."',r:'Isaiah 40:31'},
+  {i:'🙏',t:'"Cast all your anxiety on Him because He cares for you."',r:'1 Peter 5:7'},
+  {i:'🔥',t:'"For God has not given us a spirit of fear, but of power and of love and of a sound mind."',r:'2 Timothy 1:7'},
+  {i:'☀️',t:'"She is clothed with strength and dignity; she can laugh at the days to come."',r:'Proverbs 31:25'},
+  {i:'🌺',t:'"The LORD your God is with you, the Mighty Warrior who saves. He will take great delight in you; in his love he will rejoice over you with singing."',r:'Zephaniah 3:17'},
+  {i:'✝️',t:'"Come to me, all you who are weary and burdened, and I will give you rest."',r:'Matthew 11:28'},
+  {i:'💎',t:'"Trust in the LORD with all your heart and lean not on your own understanding; in all your ways submit to him, and he will make your paths straight."',r:'Proverbs 3:5–6'},
+  {i:'🌈',t:'"For we are God\'s handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do."',r:'Ephesians 2:10'}
+];
+let verseIdx=Math.floor(Math.random()*verses.length);
+function showVerse(i){ const v=verses[i]; const card=document.getElementById('vcard'); card.style.opacity='0'; card.style.transform='translateY(14px)'; setTimeout(()=>{ document.getElementById('vi').textContent=v.i; document.getElementById('vt').textContent=v.t; document.getElementById('vr').textContent=v.r; card.style.opacity='1'; card.style.transform='translateY(0)'; },200); }
+window.nextV=()=>{ verseIdx=(verseIdx+1)%verses.length; showVerse(verseIdx); };
+window.prevV=()=>{ verseIdx=(verseIdx-1+verses.length)%verses.length; showVerse(verseIdx); };
+showVerse(verseIdx);
+
+// Autoplay music - no button, just try to play
+const audioEl = document.getElementById('bgSong');
+audioEl.volume = 0.5;
+audioEl.play().catch(() => {
+  // if autoplay blocked, try on first user touch/click anywhere (still no button)
+  const resume = () => {
+    audioEl.play().catch(()=>{});
+    document.body.removeEventListener('click', resume);
+    document.body.removeEventListener('touchstart', resume);
+  };
+  document.body.addEventListener('click', resume);
+  document.body.addEventListener('touchstart', resume);
+});
+
+// scroll animations
+document.querySelectorAll('#hero .float-anim').forEach((el,i)=>setTimeout(()=>el.classList.add('show'),180+i*140));
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); }),{threshold:0.1});
+document.querySelectorAll('.s:not(#hero) .float-anim').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
